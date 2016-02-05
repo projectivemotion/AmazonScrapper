@@ -11,5 +11,8 @@
   ],
   "require": {
     "atofighi/phpquery": "2.0.1"
+  },
+  "autoload": {
+    "classmap": ["src/"]
   }
 }
