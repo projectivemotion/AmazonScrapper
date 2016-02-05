@@ -40,11 +40,17 @@ if(!file_exists($testf))
 
 
 // Demo:
-$f = new AmazonScrapper();
+$Scrapper = new AmazonScrapper();
 
 //  in case you want to set a category_id, etc..
-$f->setBaseData(array('my_id'  => '9999'));
-$results = $f->getPageItems($content);
+$Scrapper->setBaseData(array('my_id'  => '9999'));
+
+$results = $Scrapper->getPageItems($content);
 
 print_r($results);
 
+$Scrapper->setColumnPrefix('my_');
+
+$results_prefixcolumns = $Scrapper->getPageItems($content);
+
+print_r($results_prefixcolumns);

@@ -21,6 +21,11 @@ class AmazonScrapper
     protected $basedata = array();
     protected $column_prefix    =   '';
 
+    public function setColumnPrefix($column_prefix)
+    {
+        $this->column_prefix = $column_prefix;
+    }
+
     public function setBaseData($basedata)
     {
         $this->basedata = $basedata;
