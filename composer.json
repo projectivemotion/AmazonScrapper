@@ -1,0 +1,15 @@
+{
+  "name": "projectivemotion/AmazonScrapper",
+  "description": "This class will scrape item info off an amazon category list page.",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Amado Martinez",
+      "email": "amado@projectivemotion.com"
+    }
+  ],
+  "require": {
+    "atofighi/phpquery": "2.0.1"
+  }
+}
