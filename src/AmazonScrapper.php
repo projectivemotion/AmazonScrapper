@@ -76,7 +76,7 @@ class AmazonScrapper
         $data[$this->column_prefix . 'ship']   =   '';
 
         $item_code = $item_node->html();
-        $data['ship']   =   $this->findShipping($item_code);
+        $data[$this->column_prefix . 'ship']   =   $this->findShipping($item_code);
 
         return $data;
     }
