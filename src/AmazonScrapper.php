@@ -74,7 +74,7 @@ class AmazonScrapper
 
         $data[$this->column_prefix . 'title']  =   trim($title->text());
         $data[$this->column_prefix . 'url']    =   trim($title->attr('href'));
-        $data[$this->column_prefix . 'price']  =   floatval(str_replace('$', '', trim($item_node->find('.a-color-price')->text())));
+        $data[$this->column_prefix . 'price']  =   floatval(preg_replace('#[$£]#', '', trim($item_node->find('.a-color-price')->text())));
         $data[$this->column_prefix . 'is_prime']   =   $is_prime ? 1 : 0;
         $data[$this->column_prefix . 'reviews'] = intval($item_node->find('.a-spacing-none .a-size-small:last')->text());
         $data[$this->column_prefix . 'pic_url'] = trim($item_node->find('.s-access-image')->attr('src'));
@@ -86,9 +86,10 @@ class AmazonScrapper
         return $data;
     }
 
-    function findShipping($html)
+    function findShipping($item_html)
     {
-        $p = preg_match('#\s*([^>]*?)\s*Shipping[^<]*?#', $html, $matches);
+        $p = preg_match('#\s*([^>]*?)\s*(Delivery|Shipping)[^<]*?#', $item_html, $matches);
+
         return $p > 0 ? $matches[0] : 'Unknown';
     }
 }
